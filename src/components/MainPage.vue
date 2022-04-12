@@ -7,7 +7,7 @@
           @addLog="addLogCard"
         />
         <LogCard 
-          v-for="(log, index) in sortedLogList"
+          v-for="(log, index) in logList"
           :key="log.id"
           :logData="log"
           :index="index"
@@ -84,9 +84,12 @@ export default {
         time: time,
         issues: issues,
       });
+      this.logList.sort((a, b) => {
+        return a.date > b.date ? -1 : 1;
+      });
       issues.forEach((issue) => {
         this.issueList.push(issue);
-      })
+      });
     },
     removeLog: function(index) {
       const deleteIssues = this.logList[index].issues;
@@ -110,11 +113,6 @@ export default {
       });
       return sum;
     },
-    sortedLogList: function() {
-      return this.logList.slice().sort((a, b) => {
-        return a.date > b.date ? -1 : 1;
-      });
-    }
   },
   watch: {
     logList: {
