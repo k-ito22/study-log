@@ -91,16 +91,15 @@ export default {
     removeLog: function(index) {
       const deleteIssues = this.logList[index].issues;
       deleteIssues.forEach(deleteIssue => {
-        const index = this.issueList.indexOf(deleteIssue);
-        if(index === -1) {
+        const issueIndex = this.issueList.indexOf(deleteIssue);
+        if(issueIndex === -1) {
           const solvedIndex = this.solvedIssueList.indexOf(deleteIssue);
           this.solvedIssueList.splice(solvedIndex, 1);
         } else {
-          this.issueList.splice(index, 1);
+          this.issueList.splice(issueIndex, 1);
         }
       });
       this.logList.splice(index, 1);
-      
     }
   },
   computed: {
