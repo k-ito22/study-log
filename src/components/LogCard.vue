@@ -29,7 +29,7 @@ export default {
     index: {
       type: Number,
       required: true,
-    }
+    },
   },
   methods: {
     onRemoveCard: function(index) {
